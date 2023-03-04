@@ -8,6 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static io.qameta.allure.internal.shadowed.jackson.databind.type.LogicalType.Map;
+
 public class TestsConfiguration {
     public void configureTests() {
         Configuration.browserSize = "1920x1080";
@@ -18,7 +20,6 @@ public class TestsConfiguration {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
-
         Configuration.browserCapabilities = capabilities;
     }
 
