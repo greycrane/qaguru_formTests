@@ -5,11 +5,14 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import com.example.helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Map;
 
 public class TestsConfiguration {
+
+    @BeforeAll
     public void configureTests() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
