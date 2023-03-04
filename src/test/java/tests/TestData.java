@@ -1,7 +1,7 @@
 package tests;
 
+import com.example.glossary.*;
 import com.github.javafaker.Faker;
-import pages.glossary.*;
 
 public class TestData {
     Faker faker = new Faker();
