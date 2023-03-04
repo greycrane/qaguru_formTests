@@ -9,6 +9,7 @@ import com.example.components.RegistrationFormResults;
 
 import static io.qameta.allure.Allure.step;
 
+@Tag("remote")
 public class RegistrationFormTests extends TestData{
     TestData testData = new TestData();
 
@@ -19,7 +20,6 @@ public class RegistrationFormTests extends TestData{
     }
 
     @Test
-    @Tag("remote")
     void studentRegistrationFormTest() {
         RegistrationForm registrationForm = new RegistrationForm();
         CalendarWidget calendarWidget = new CalendarWidget();
