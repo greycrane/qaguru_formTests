@@ -12,8 +12,8 @@ public class TestData {
     String gender = faker.demographic().sex();
     String mobileNumber = faker.number().digits(10);
     String yearOfBirth = String.valueOf(faker.number().numberBetween(1970, 2000));
-    String monthOfBirth = String.valueOf(faker.options().option(Month.class));
-    String dayOfBirth = String.valueOf(faker.number().numberBetween(1, 28));
+    String monthOfBirth = "January";
+    String dayOfBirth = "24";
     String subject = String.valueOf(faker.options().option(Subject.class));
     String hobby = String.valueOf(faker.options().option(Hobby.class));
     String picture = "student.png";
