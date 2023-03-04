@@ -10,11 +10,11 @@ public class TestsConfiguration {
 
     @BeforeAll
     public void configureTests() {
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = System.getProperty("resolution", "1920x1080");
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "100.0";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("version", "100.0");
+        Configuration.remote = System.getProperty("selenoid", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
