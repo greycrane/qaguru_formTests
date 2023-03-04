@@ -1,8 +1,9 @@
 package tests;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import com.example.helpers.Attachments;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import com.example.RegistrationForm;
 import com.example.components.CalendarWidget;
 import com.example.components.RegistrationFormResults;
@@ -17,6 +18,11 @@ public class RegistrationFormTests extends TestData{
     static void configTests() {
         TestsConfiguration testsConfiguration = new TestsConfiguration();
         testsConfiguration.configureTests();
+    }
+
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @Test
@@ -64,5 +70,13 @@ public class RegistrationFormTests extends TestData{
                     .validateResults(testData.resultsAddress, testData.currentAddress)
                     .validateResults(testData.resultsStateAndCity, testData.state + " " + testData.city);
         });
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attachments.screenshotAs("Final screenshot");
+        Attachments.pageSource();
+        Attachments.browserConsoleLogs();
+        Attachments.addVideo();
     }
 }
