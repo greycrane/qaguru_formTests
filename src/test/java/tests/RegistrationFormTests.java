@@ -1,29 +1,16 @@
 package tests;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
-import com.example.helpers.Attachments;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.*;
 import com.example.RegistrationForm;
 import com.example.components.CalendarWidget;
 import com.example.components.RegistrationFormResults;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 
 @Tag("remote")
-public class RegistrationFormTests extends TestData{
+public class RegistrationFormTests extends TestBase{
     TestData testData = new TestData();
-
-    @BeforeAll
-    static void configTests() {
-        TestsConfiguration testsConfiguration = new TestsConfiguration();
-        testsConfiguration.configureTests();
-    }
-
-    @BeforeEach
-    void addListener() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-    }
 
     @Test
     void studentRegistrationFormTest() {
@@ -70,13 +57,5 @@ public class RegistrationFormTests extends TestData{
                     .validateResults(testData.resultsAddress, testData.currentAddress)
                     .validateResults(testData.resultsStateAndCity, testData.state + " " + testData.city);
         });
-    }
-
-    @AfterEach
-    void addAttachments() {
-        Attachments.screenshotAs("Final screenshot");
-        Attachments.pageSource();
-        Attachments.browserConsoleLogs();
-        Attachments.addVideo();
     }
 }
