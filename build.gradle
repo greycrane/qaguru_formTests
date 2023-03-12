@@ -33,7 +33,8 @@ dependencies {
             'org.junit.jupiter:junit-jupiter:5.9.2',
             'com.codeborne:selenide:6.12.0',
             'com.github.javafaker:javafaker:1.0.2',
-            'io.qameta.allure:allure-selenide:2.21.0'
+            'io.qameta.allure:allure-selenide:2.21.0',
+            'org.aeonbits.owner:owner:1.0.4'
     )
 }
 
@@ -43,10 +44,4 @@ tasks.withType(Test) {
 
 test {
     useJUnitPlatform()
-}
-
-task remote_tests(type: Test) {
-    useJUnitPlatform{
-        includeTags("remote")
-    }
 }
